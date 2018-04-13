@@ -1,0 +1,49 @@
+class Solution {
+    
+    public int reverse(int x) {
+        long res = 0l;
+        // 128
+        // 8*10 12/10 = 82 820,1 1/ 10 = 0
+        int digits = x;
+        
+        while (digits != 0 ) {
+            int r = digits % 10;
+            res = res*10 + r;
+            digits = digits/10;
+            //System.out.println(digits+")----["+r+"[----("+res);
+
+        }
+        if (res == (int)res) return (int)res;
+        return 0;
+        
+    }
+    
+    public int reverse1(int x) {
+        String s = Integer.toString(x);
+        if (s.length() == 0  || s.length() == 32) return 0;
+        if (x == 0 ) return 0;
+        if (s.charAt(0) == '-' ) {
+            return -1 * reverse(getInt(s.substring(1)));
+        }
+        String r = reverseString(s);
+        return getInt(r);
+        
+        
+    }
+    
+    int getInt(String s) {
+        try {
+            return Integer.parseInt(s);        
+        } catch (Exception e) {
+            return 0;    
+        }
+    }
+    public String reverseString(String s) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = s.length()-1; i >= 0 ; i--) {
+            sb.append(s.charAt(i));
+        }
+        return sb.toString();
+                   
+    }
+}
